@@ -1,8 +1,12 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
+
 void getCredentials();
+void getStudentDetails();
+void getTeacherDetails();
 void giveChoice();
 
 class Person{
@@ -65,17 +69,44 @@ public:
 };
 class collegeStudent: public Student
 {
-private:
-
-    string subject;
+protected:
+    string Major;
+    int year;
 
 public:
-
+    void setMajor(string mj){
+        Major=mj;
+    }
+    string getMajor(){
+        return Major;
+    }
+    void setYear(int yr){
+        year=yr;
+    }
+    int getYear(){
+        return year;
+    }
 
 };
 
 class Teacher: public Person{
+protected:
+    string subject;
+    double salary;
 public:
+    void setSubject(string sub){
+        subject=sub;
+    }
+    string getSubject(){
+        return subject;
+    }
+    void setSalary(double sal){
+        salary=sal;
+    }
+    double getSalary(){
+        return salary;
+    }
+
 
 
 
@@ -106,9 +137,9 @@ void getCredentials(){
     pi.setName(name);
     pi.setGender(gender);
     pi.setAge(age);
-    cout<<"Name is:\t"<<pi.getName()<<endl;
+  /*  cout<<"Name is:\t"<<pi.getName()<<endl;
     cout<<"Gender is:\t"<<pi.getGender()<<endl;
-    cout<<"Age is:\t"<<pi.getAge()<<endl;
+    cout<<"Age is:\t"<<pi.getAge()<<endl;*/
 
 
 }
@@ -119,6 +150,7 @@ void giveChoice(){
     switch (choice){
         case 1:
         getCredentials();
+        getStudentDetails();
             //Code For Student Choice.
         break;
 
@@ -133,8 +165,21 @@ void giveChoice(){
 
 
     }
+}
+void getStudentDetails(){
 
+    Student spi;
+    string id_no;
+    double grade_point;
+    cout<<"Enter Identification Number\t:"<<endl;
+    cin>>id_no;
+    cout<<"Enter Grade Point Average:\t"<<endl;
+    cin>>grade_point;
+    spi.setMyID(id_no);
+    spi.setGPA(grade_point);
 
+}
+void getTeacherDetails(){
 
 
 }

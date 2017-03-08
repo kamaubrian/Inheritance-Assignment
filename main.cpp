@@ -3,11 +3,15 @@
 #include <fstream>
 
 using namespace std;
+ofstream sDetails;
+
+
 
 void getCredentials();
 void getStudentDetails();
 void getTeacherDetails();
 void giveChoice();
+void getCollegeDetails();
 
 class Person{
 protected:
@@ -107,19 +111,13 @@ public:
         return salary;
     }
 
-
-
-
 };
-
-
 
 int main()
 {
     giveChoice();
 
-
-return 0;
+    return 0;
 }
 
 void getCredentials(){
@@ -137,9 +135,10 @@ void getCredentials(){
     pi.setName(name);
     pi.setGender(gender);
     pi.setAge(age);
-  /*  cout<<"Name is:\t"<<pi.getName()<<endl;
-    cout<<"Gender is:\t"<<pi.getGender()<<endl;
-    cout<<"Age is:\t"<<pi.getAge()<<endl;*/
+    sDetails<<"Name is:\t"<<pi.getName()<<endl;
+    sDetails<<"Gender is:\t"<<pi.getGender()<<endl;
+    sDetails<<"Age is:\t"<<pi.getAge()<<endl;
+    cin.get();
 
 
 }
@@ -149,20 +148,20 @@ void giveChoice(){
     cin>>choice;
     switch (choice){
         case 1:
+        //Code For Student Choice.
         getCredentials();
         getStudentDetails();
-            //Code For Student Choice.
         break;
 
     case 2:
-        getCredentials();
         //code for Teacher Choice.
+        getCredentials();
+        getTeacherDetails();
         break;
 
     default:
         cout<<"Unable To Proceed"<<endl;
         break;
-
 
     }
 }
@@ -177,9 +176,40 @@ void getStudentDetails(){
     cin>>grade_point;
     spi.setMyID(id_no);
     spi.setGPA(grade_point);
-
+    bool choice;
+    cout<<"Enter 1 for [FOR COLLEGE STUDENTS] or 0[EXIT]"<<endl;
+    cin>>choice;
+    if(choice ==true){
+        getCollegeDetails();
+    }
 }
 void getTeacherDetails(){
+    Teacher t1;
+    string subject;
+    double salary;
+    cout<<"Enter Subject:\t"<<endl;
+    cin>>subject;
+    cout<<"Enter Salary"<<endl;
+    cin>>salary;
+    t1.setSubject(subject);
+    t1.setSalary(salary);
+    t1.getSubject();
+    t1.getSalary();
+}
+void getCollegeDetails(){
+
+    collegeStudent st1;
+    string mj;
+    int yr;
+    cout<<"Enter Major"<<endl;
+    cin>>mj;
+    cout<<"Enter Year"<<endl;
+    cin>>yr;
+    st1.setMajor(mj);
+    st1.setYear(yr);
+    st1.getMajor();
+    st1.getYear();
+
 
 
 }
